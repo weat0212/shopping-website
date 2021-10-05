@@ -2,10 +2,10 @@ package com.awp.productservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
