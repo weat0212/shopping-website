@@ -20,6 +20,7 @@ public class Product {
     //品名
     @NotBlank
     @Field(value="product_name")
+    @JsonProperty("product_name")
     private String productName;
 
     //分類
@@ -29,6 +30,7 @@ public class Product {
 
     //圖片位置
     @Field(value="image_url")
+    @JsonProperty("image_url")
     private String imageUrl;
 
     //是否上架
@@ -42,6 +44,7 @@ public class Product {
     private Integer sort;
 
     //原始售價
+    @NotBlank
     @Field(value="origin_price")
     @JsonProperty("origin_price")
     private Double originPrice;
@@ -51,9 +54,12 @@ public class Product {
     private Double price;
 
     //單位
-    @NotBlank
     @Field(value="unit")
     private String unit;
+
+    @NotBlank
+    @Field(value = "units_in_stock")
+    private Integer unitsInStock;
 
     @Field(value="description")
     private String description;

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../../services/product.service";
 import {Product} from "../../common/product";
+import {Utils} from "../../common/utils";
 
 @Component({
   selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
+  templateUrl: './product-list-table.component.html',
+  // templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
@@ -20,9 +22,8 @@ export class ProductListComponent implements OnInit {
   listProducts() {
     this.productService.getProductList().subscribe(
       data => {
+        Utils.keysToCamel(data);
         this.products = data;
-      }
-    )
+      })
   }
-
 }

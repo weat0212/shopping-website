@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 @RestController
@@ -30,8 +31,10 @@ public class ProductController {
      */
     @PostMapping("/product/new")
     public Mono<Product> createProduct(@Valid @RequestBody Product product) {
-        // -1 means new product
-        product.setId(-1L);
+        // null means new product
+        product.setId(1L);
+        product.setCreateTime(new Date(System.currentTimeMillis()));
+        product.setUpdateTime(new Date(System.currentTimeMillis()));
         return productRepository.save(product);
     }
 
@@ -48,6 +51,12 @@ public class ProductController {
                 });
     }
 
+    /**
+     * 用ID取得特定商品
+     *
+     * @param id
+     * @return
+     */
     @GetMapping("/product/{id}")
     public Mono<ProductDto> getProduct(@PathVariable("id") Long id) {
         return productRepository.findById(id).map(product -> {

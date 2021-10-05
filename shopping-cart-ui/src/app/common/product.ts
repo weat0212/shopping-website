@@ -1,12 +1,17 @@
 export class Product {
 
-  sku!:string;
-  name!:string;
-  description!:string;
-  unitPrice!:number;
+  id!:string;
+  productName!:string;
+  category!:string;
   imageUrl!:string;
-  active!:boolean;
-  unitsInStock!: number;
-  dateCreated!:Date;
-  lastUpdated!:Date;
+  isActivated!: boolean;
+  sort!: number;
+  originPrice!: number;
+  price!: number;
+  unit!:string;
+  unitsInStock!:number;
+  description!:string;
+  content!: string;
+  createTime!:Date;
+  updateTime!:Date;
 }
