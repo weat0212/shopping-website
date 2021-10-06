@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <form [formGroup]="productForm">
+      <div class="form-group">
+        <label for="productName" class="control-label">產品名稱：</label>
+        <input id="productName" type="text" formControlName="productName">
+      </div>
+
+      <div class="form-group">
+        <label for="category" class="control-label">分類：</label>
+        <select id="category">
+          <option *ngFor="let category of categories" [value]="category.category">{{category.category}}</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" (click)=submit()>新增</button>
+    </form>
+  </div>
+
+  <!--  <div>{{newProduct.productName}}</div>-->
+</div>
+

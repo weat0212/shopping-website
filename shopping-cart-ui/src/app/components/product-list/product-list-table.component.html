@@ -1,17 +1,17 @@
 
-<table>
+<table class="table">
   <thead class="thead-dark">
     <tr>
       <th>Product</th>
       <th>Price</th>
-      <th>Units in Stock</th>
+      <th>Available</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let product of products">
       <td>{{product.productName}}</td>
-      <td>{{product.price | currency:'NTD'}}</td>
-      <td>{{product.unitsInStock}}</td>
+      <td>{{product.originPrice | currency:'NTD'}}</td>
+      <td>{{product.isActivated}}</td>
     </tr>
   </tbody>
 </table>

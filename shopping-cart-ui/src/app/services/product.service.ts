@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ProductDto} from "../common/ProductDto";
+import {ProductDto} from "../models/dto/ProductDto";
+import {CategoriesDto} from "../models/dto/categoriesDto";
 
 @Injectable({
   providedIn: 'root'
@@ -15,15 +16,9 @@ export class ProductService {
   getProductList(): Observable<ProductDto> {
     return this.httpClient.get<ProductDto>(this.baseUrl);
   }
-  // getProductList(): Observable<Product[]> {
-  //   return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
-  //     map(res => res._embedded.products)
-  //   )
-  // }
+
+  getCategory(): Observable<CategoriesDto>{
+    return this.httpClient.get<CategoriesDto>("http://localhost:8080/api/categories");
+  }
 }
 
-// interface GetResponse {
-//   _embedded: {
-//     products: Product[];
-//   }
-// }
