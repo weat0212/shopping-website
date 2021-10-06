@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Product} from "../common/product";
-import {map} from "rxjs/operators";
+import {ProductDto} from "../common/ProductDto";
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +12,18 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProductList(): Observable<Product[]> {
-    return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
-      map(res => res._embedded.products)
-    )
+  getProductList(): Observable<ProductDto> {
+    return this.httpClient.get<ProductDto>(this.baseUrl);
   }
+  // getProductList(): Observable<Product[]> {
+  //   return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
+  //     map(res => res._embedded.products)
+  //   )
+  // }
 }
 
-interface GetResponse {
-  _embedded: {
-    products: Product[];
-  }
-}
+// interface GetResponse {
+//   _embedded: {
+//     products: Product[];
+//   }
+// }

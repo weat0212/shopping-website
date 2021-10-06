@@ -11,14 +11,28 @@ export class Utils {
     });
   }
 
+  // static keysToCamel(o: any): any {
+  //   if (o === Object(o) && !Array.isArray(o) && typeof o !== 'function') {
+  //     const n = {};
+  //     Object.keys(o)
+  //       .forEach((k) => {
+  //         n[this.toCamel(k)] = this.keysToCamel(o[k]);
+  //       });
+  //     return n;
+  //   } else if (Array.isArray(o)) {
+  //     return o.map((i) => {
+  //       return this.keysToCamel(i);
+  //     });
+  //   }
+  //   return o;
+  // }
+
   static keysToCamel(o: any): any {
     if (o === Object(o) && !Array.isArray(o) && typeof o !== 'function') {
-      const n = {};
-      Object.keys(o)
-        .forEach((k) => {
-          // @ts-ignore
-          n[this.toCamel(k)] = this.keysToCamel(o[k]);
-        });
+      const n: { [key: string]: any } = {};
+      Object.keys(o).forEach((k) => {
+        n[this.toCamel(k)] = this.keysToCamel(o[k]);
+      });
       return n;
     } else if (Array.isArray(o)) {
       return o.map((i) => {

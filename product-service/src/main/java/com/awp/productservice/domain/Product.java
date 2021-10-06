@@ -59,6 +59,7 @@ public class Product {
 
     @NotBlank
     @Field(value = "units_in_stock")
+    @JsonProperty("units_in_stock")
     private Integer unitsInStock;
 
     @Field(value="description")
