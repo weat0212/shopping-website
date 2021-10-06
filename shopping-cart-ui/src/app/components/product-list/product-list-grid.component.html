@@ -1,0 +1,16 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div class="row">
+        <div *ngFor="let product of products" class="col-md-3">
+          <div class="product-box">
+            <img src="assets/images/placeholder.png" class="img-responsive" alt="product">
+            <h1>{{ product.productName }}</h1>
+            <div class="price">{{ product.originPrice | currency:'NTD'}}</div>
+            <a href="#" class="primary-btn">加入購物車</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

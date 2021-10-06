@@ -3,16 +3,20 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th>Product</th>
-      <th>Price</th>
-      <th>Available</th>
+      <th>商品名稱</th>
+      <th>價格</th>
+      <th>庫存</th>
+      <th>商品描述</th>
     </tr>
   </thead>
+
   <tbody>
     <tr *ngFor="let product of products">
-      <td>{{product.productName}}</td>
-      <td>{{product.originPrice | currency:'NTD'}}</td>
-      <td>{{product.isActivated}}</td>
+      <td class="align-middle"><img src="assets/images/placeholder.png" height="50" alt="product image"/></td>
+      <td class="align-middle">{{product.productName}}</td>
+      <td class="align-middle">{{product.originPrice | currency:'NTD'}}</td>
+      <td class="align-middle">{{product.unitsInStock}}</td>
+      <td class="align-middle">{{product.description}}</td>
     </tr>
   </tbody>
 </table>

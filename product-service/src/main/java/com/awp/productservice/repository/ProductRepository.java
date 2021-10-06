@@ -11,6 +11,6 @@ import reactor.core.publisher.Flux;
 public interface ProductRepository extends ReactiveMongoRepository<Product, Long> {
 
     //TODO: NOT ABLE TO FIND
-    @Query("db.find().distinct('category')")
+    @Query("$distinct('category')")
     Flux<String> getDistinctCategories();
 }
