@@ -15,7 +15,7 @@ export class UploadProductComponent implements OnInit {
     productName: new FormControl(''),
     category: new FormControl(''),
     originPrice: new FormControl(''),
-    unit: new FormControl(''),
+    unitsInStock: new FormControl(''),
     description: new FormControl('')
   });
 

@@ -8,12 +8,16 @@ import {ProductService} from "./services/product.service";
 import {UploadProductComponent} from './components/upload-product/upload-product.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing.module";
+import { NaviComponent } from './components/navi/navi.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    UploadProductComponent
+    UploadProductComponent,
+    NaviComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
