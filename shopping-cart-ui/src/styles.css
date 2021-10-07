@@ -134,7 +134,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
  */
 
 .header-desktop{
-  background:#0da8e4;
+  background:#7F8C8D;
   -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
@@ -245,7 +245,7 @@ input.au-input.au-input-xl{
   font-size:22px;
   float:left;
   margin-top:16px;
-  color:#fff;
+  color:#5D6D7E;
   margin-left:15px
 }
 
@@ -253,8 +253,7 @@ input.au-input.au-input-xl{
   background:#205b8d;
   line-height:43px;
   color:#fff;
-  border-radius:30px;
-  border:1px solid #0da8e4;
+  border-radius:5px;
   float:left;
   margin-top:7px;
   padding-left:17px
@@ -265,8 +264,8 @@ input.au-input.au-input-xl{
   background:#fff;
   padding:0 13px;
   color:#000;
-  border-top-right-radius:20px;
-  border-bottom-right-radius:20px;
+  border-top-right-radius:5px;
+  border-bottom-right-radius:5px;
   margin-left:11px
 }
 
@@ -283,7 +282,6 @@ input.au-input.au-input-xl{
   right:0;
   min-width:95px;
   color:#fff;
-  border:1px solid #205b8d;
   -webkit-border-radius:3px;
   -moz-border-radius:3px;
   border-radius:43px;
@@ -542,7 +540,7 @@ input.au-input.au-input-xl{
 .price{
   margin:15px 0 0;
   font-weight:800;
-  color:#0da8e4
+  color:#34495E
 }
 .product-box h1{
   font-size:18px;
@@ -974,7 +972,7 @@ footer ul li{
     text-align:center
   }
   .product-box{
-    text-align:centerg
+    text-align:center
   }
   .page-container{
     position:relative;
@@ -986,7 +984,6 @@ footer ul li{
     right:10px;
     min-width:85px;
     color:#fff;
-    border:1px solid #205b8d;
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
     border-radius:0;
