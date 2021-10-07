@@ -15,24 +15,24 @@
     <form [formGroup]="productForm">
       <div class="form-group">
         <label for="productName" class="control-label">產品名稱：</label>
-        <input id="productName" type="text" formControlName="productName" class="input-group-text">
+        <input id="productName" type="text" formControlName="product_name" class="input-group-text">
       </div>
 
       <div class="form-group">
         <label for="category" class="control-label">分類：</label>
-        <select id="category" class="input-group-text">
-          <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+        <select id="category" class="input-group-text" (change)="$event.target" formControlName="category">
+          <option *ngFor="let category of categories"  [value]="category">{{category}}</option>
         </select>
       </div>
 
       <div class="form-group">
         <label for="price" class="control-label">價格：</label>
-        <input id="price" type="text" formControlName="originPrice" class="input-group-text">
+        <input id="price" type="text" formControlName="origin_price" class="input-group-text">
       </div>
 
       <div class="form-group">
         <label for="unitsInStock" class="control-label">數量：</label>
-        <input id="unitsInStock" type="text" formControlName="unitsInStock" class="input-group-text">
+        <input id="unitsInStock" type="text" formControlName="units_in_stock" class="input-group-text">
       </div>
 
       <div class="form-group">

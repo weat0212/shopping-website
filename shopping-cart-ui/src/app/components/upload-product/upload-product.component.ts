@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {ProductService} from "../../services/product.service";
-import {Category} from "../../models/category";
-import {CategoriesDto} from "../../models/dto/categoriesDto";
 
 @Component({
   selector: 'app-upload-product',
@@ -12,10 +10,10 @@ import {CategoriesDto} from "../../models/dto/categoriesDto";
 export class UploadProductComponent implements OnInit {
 
   productForm = new FormGroup({
-    productName: new FormControl(''),
+    product_name: new FormControl(''),
     category: new FormControl(''),
-    originPrice: new FormControl(''),
-    unitsInStock: new FormControl(''),
+    origin_price: new FormControl(''),
+    units_in_stock: new FormControl(''),
     description: new FormControl('')
   });
 
@@ -31,7 +29,7 @@ export class UploadProductComponent implements OnInit {
   }
 
   submit() {
-
+    this.productService.uploadNewProduct(this.productForm.value);
   }
 
   // Impl Fail
