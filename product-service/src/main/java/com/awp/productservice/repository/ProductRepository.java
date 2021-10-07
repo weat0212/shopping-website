@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 
 @Repository
-public interface ProductRepository extends ReactiveMongoRepository<Product, Long> {
+public interface ProductRepository extends ReactiveMongoRepository<Product, String> {
 
     //TODO: NOT ABLE TO FIND
     @Query("$distinct('category')")

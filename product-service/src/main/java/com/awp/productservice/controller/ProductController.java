@@ -31,8 +31,8 @@ public class ProductController {
      */
     @PostMapping("/product/new")
     public Mono<Product> createProduct(@Valid @RequestBody Product product) {
-        // null means new product
-        product.setId(1L);
+        // Monogodb auto-generate object id
+//        product.setId(1L);
         product.setCreateTime(new Date(System.currentTimeMillis()));
         product.setUpdateTime(new Date(System.currentTimeMillis()));
         return productRepository.save(product);
@@ -58,7 +58,7 @@ public class ProductController {
      * @return
      */
     @GetMapping("/product/{id}")
-    public Mono<ProductDto> getProduct(@PathVariable("id") Long id) {
+    public Mono<ProductDto> getProduct(@PathVariable("id") String id) {
         return productRepository.findById(id).map(product -> {
             return ProductDto.builder().product(product).build();
         });

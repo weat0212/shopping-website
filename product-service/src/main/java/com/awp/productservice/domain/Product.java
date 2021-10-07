@@ -15,7 +15,7 @@ public class Product {
 
     @Id
     @Field
-    private Long id;
+    private String id;
 
     //品名
     @NotBlank

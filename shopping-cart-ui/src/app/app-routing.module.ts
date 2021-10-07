@@ -6,7 +6,9 @@ import {UploadProductComponent} from "./components/upload-product/upload-product
 const routes: Routes = [
   {path: "", component: ProductListComponent},
   {path: "products", component: ProductListComponent},
-  {path: "product/new", component: UploadProductComponent}
+  {path: "product/new", component: UploadProductComponent},
+  {path: "category/:id", component: ProductListComponent},
+  {path: "**", redirectTo: '/products', pathMatch: 'full'}
 ];
 
 @NgModule({
