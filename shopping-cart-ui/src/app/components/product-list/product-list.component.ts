@@ -3,6 +3,7 @@ import {ProductService} from "../../services/product.service";
 import {Utils} from "../../common/utils";
 import {ProductDto} from "../../models/dto/ProductDto";
 import {Product} from "../../models/product";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-product-list',
@@ -13,20 +14,44 @@ import {Product} from "../../models/product";
 export class ProductListComponent implements OnInit {
 
   productDto!: ProductDto;
-  products!:Product[];
+  products!: Product[];
+  currentCategoryId!: number;
 
-  constructor(private productService: ProductService) { }
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute
+  ) {
+  }
 
   ngOnInit(): void {
-    this.listProducts();
+    this.route.paramMap.subscribe(() => {
+      this.listProducts();
+    });
   }
 
   listProducts() {
-    this.productService.getProductList().subscribe(
-      data => {
-        this.productDto = Utils.keysToCamel(data) as ProductDto;
-        this.products = this.productDto.products;
-        // console.log(this.products.toString())
-      })
+
+    // Here check if category id existed
+    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+
+    if (hasCategoryId) {
+      // get id param (string) and convert to number
+      // @ts-ignore
+      this.currentCategoryId = +this.route.snapshot.paramMap.get('id');
+      this.productService.getProductList(this.currentCategoryId).subscribe(
+        data => {
+          this.productDto = Utils.keysToCamel(data) as ProductDto;
+          this.products = this.productDto.products;
+          // console.log(this.products.toString())
+        })
+    } else {
+      // No category id situation
+      this.productService.getProductList().subscribe(
+        data => {
+          this.productDto = Utils.keysToCamel(data) as ProductDto;
+          this.products = this.productDto.products;
+          // console.log(this.products.toString())
+        })
+    }
   }
 }

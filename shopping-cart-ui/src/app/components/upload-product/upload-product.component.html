@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row-cols-md-3">
 
+  <div class="main-content container-fluid">
     <h2>上傳商品</h2>
 
     <form action="http://localhost:8080/image" method="post" enctype="multipart/form-data">
@@ -9,7 +9,8 @@
         <input id="imagefile" name="imagefile" type="file" class="file">
         <button type="submit" class="btn btn-outline-secondary">上傳</button>
       </div>
-    </form><br>
+    </form>
+    <br>
 
     <form [formGroup]="productForm">
       <div class="form-group">
@@ -20,7 +21,7 @@
       <div class="form-group">
         <label for="category" class="control-label">分類：</label>
         <select id="category" class="input-group-text">
-          <option *ngFor="let category of categories" [value]="category.category">{{category.category}}</option>
+          <option *ngFor="let category of categories" [value]="category">{{category}}</option>
         </select>
       </div>
 
@@ -41,7 +42,6 @@
 
       <button class="btn btn-primary" (click)=submit()>新增</button>
     </form>
-
   </div>
   <!--  <div>{{newProduct.productName}}</div>-->
 </div>

@@ -19,7 +19,7 @@ export class UploadProductComponent implements OnInit {
     description: new FormControl('')
   });
 
-  categories!: Category[];
+  categories!: string[];
 
 
   constructor(
@@ -27,8 +27,7 @@ export class UploadProductComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.loadCategory();
-    this.categories = [new Category("日用品"), new Category("食品")]
+    this.loadCategory();
   }
 
   submit() {
@@ -37,10 +36,8 @@ export class UploadProductComponent implements OnInit {
 
   // Impl Fail
   loadCategory() {
-    this.productService.getCategory().subscribe(
-      res => {
-        this.categories = res.categories
-      }
-    );
+    this.productService.getCategories().subscribe(
+      res => this.categories = res.category
+    )
   }
 }

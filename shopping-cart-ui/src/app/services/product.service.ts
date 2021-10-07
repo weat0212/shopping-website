@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ProductDto} from "../models/dto/ProductDto";
-import {CategoriesDto} from "../models/dto/categoriesDto";
+import {Category} from "../models/category";
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +13,12 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProductList(): Observable<ProductDto> {
+  getProductList(categoryId?:number): Observable<ProductDto> {
     return this.httpClient.get<ProductDto>(this.baseUrl);
   }
 
-  getCategory(): Observable<CategoriesDto>{
-    return this.httpClient.get<CategoriesDto>("http://localhost:8080/api/categories");
+  getCategories(): Observable<Category>{
+    return this.httpClient.get<Category>("http://localhost:8080/api/categories");
   }
 }
 

@@ -1,41 +1,15 @@
 <div class="page-wrapper">
-
   <!-- MENU SIDEBAR-->
   <app-sidebar></app-sidebar>
-  <!-- END MENU SIDEBAR-->
-
   <!-- PAGE CONTAINER-->
   <div class="page-container">
     <!-- HEADER DESKTOP-->
-    <header class="header-desktop">
-      <div class="section-content section-content-p30">
-        <div class="container-fluid">
-          <div class="header-wrap">
-            <form class="form-header" onsubmit="return false;" method="GET">
-              <input class="au-input au-input-xl" type="text" name="search"
-                     placeholder="活動資訊"/>
-              <button class="au-btn-submit" type="submit">
-                搜尋
-              </button>
-            </form>
-            <div class="cart-area d-n">
-              <a href="#">
-                <div class="total">19.22 <span> 2</span></div>
-                <i class="fa fa-shopping-cart"
-                   aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-          <div class="account-wrap"></div>
-        </div>
-      </div>
-    </header>
-    <!-- END HEADER DESKTOP-->
-
+    <app-navi></app-navi>
     <!-- MAIN CONTENT-->
     <router-outlet></router-outlet>
   </div>
+
+  <app-footer></app-footer>
+  <!-- END PAGE CONTAINER-->
 </div>
 
-<!-- END PAGE CONTAINER-->
-<app-footer></app-footer>
