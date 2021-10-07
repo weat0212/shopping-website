@@ -2,21 +2,20 @@
   <div class="section-content section-content-p30">
     <div class="container-fluid">
       <div class="header-wrap">
-        <form class="form-header" onsubmit="return false;" method="GET">
-          <input class="au-input au-input-xl" type="text" name="search"
-                 placeholder="活動資訊"/>
-          <button class="au-btn-submit" type="submit">
-            搜尋
-          </button>
-        </form>
+        <app-search></app-search>
         <ul>
-          <li routerLink="/product/new" class="btn btn-block btn-sm">
+          <li routerLink="/products" class="btn btn-sm">
+            <a style="color: white">買東西</a>
+          </li>
+          <li routerLink="/product/new" class="btn btn-sm">
             <a style="color: white">賣東西</a>
           </li>
         </ul>
         <div class="cart-area d-n">
           <a href="#">
-            <div class="total">19.22 <span> 2</span></div>
+            <div class="total">NTD$ 1,000
+              <span><img src="assets/images/shopping-cart.png" width="20"/></span>
+            </div>
             <i class="fa fa-shopping-cart"
                aria-hidden="true"></i>
           </a>

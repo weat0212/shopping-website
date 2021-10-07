@@ -1,0 +1,9 @@
+<form class="form-header">
+  <input #keyword
+         class="au-input au-input-xl" type="text" name="search"
+         placeholder="活動資訊" (keyup.enter)="doSearch(keyword.value)"/>
+
+  <button class="au-btn-submit" (click)="doSearch(keyword.value)">
+    搜尋
+  </button>
+</form>

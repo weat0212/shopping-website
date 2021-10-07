@@ -16,6 +16,7 @@ export class ProductListComponent implements OnInit {
   productDto!: ProductDto;
   products!: Product[];
   currentCategoryId!: number;
+  searchMode!: boolean;
 
   constructor(
     private productService: ProductService,
@@ -30,7 +31,16 @@ export class ProductListComponent implements OnInit {
   }
 
   listProducts() {
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
 
+    if (this.searchMode) {
+      this.handleSearchProducts()
+    } else {
+      this.handleListProducts();
+    }
+  }
+
+  handleListProducts() {
     // Here check if category id existed
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
 
@@ -53,5 +63,17 @@ export class ProductListComponent implements OnInit {
           // console.log(this.products.toString())
         })
     }
+  }
+
+  private handleSearchProducts() {
+    const theKeyword: string | null = this.route.snapshot.paramMap.get('keyword');
+
+    // now search for the products using keyword
+    this.productService.searchProducts(theKeyword).subscribe(
+      data => {
+        this.productDto = Utils.keysToCamel(data) as ProductDto;
+        this.products = this.productDto.products;
+      }
+    )
   }
 }

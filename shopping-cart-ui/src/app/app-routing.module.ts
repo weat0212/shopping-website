@@ -4,10 +4,11 @@ import {ProductListComponent} from "./components/product-list/product-list.compo
 import {UploadProductComponent} from "./components/upload-product/upload-product.component";
 
 const routes: Routes = [
-  {path: "", component: ProductListComponent},
+  {path: "search/:keyword", component: ProductListComponent},
   {path: "products", component: ProductListComponent},
   {path: "product/new", component: UploadProductComponent},
   {path: "category/:id", component: ProductListComponent},
+  {path: "", component: ProductListComponent},
   {path: "**", redirectTo: '/products', pathMatch: 'full'}
 ];
 

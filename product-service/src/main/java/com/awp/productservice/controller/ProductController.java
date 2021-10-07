@@ -63,4 +63,11 @@ public class ProductController {
             return ProductDto.builder().product(product).build();
         });
     }
+
+    @GetMapping("/product")
+    public Mono<ProductListDto> getProductContaining(@RequestParam("name") String name) {
+        return productRepository.findByProductNameContaining(name).collectList().map(
+                products -> ProductListDto.builder().products(products).build()
+        );
+    }
 }

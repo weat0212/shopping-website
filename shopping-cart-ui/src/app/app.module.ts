@@ -11,6 +11,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import { NaviComponent } from './components/navi/navi.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     UploadProductComponent,
     NaviComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
