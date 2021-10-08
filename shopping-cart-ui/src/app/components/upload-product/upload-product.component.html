@@ -3,6 +3,8 @@
   <div class="main-content container-fluid">
     <h2>上傳商品</h2>
 
+    <div *ngIf="successOrNot" class="alert alert-success col-md-12" role="alert">{{successMsg}}</div>
+
     <form action="http://localhost:8080/image" method="post" enctype="multipart/form-data">
       <div class="form-group">
         <label for="imagefile" class="control-label">商品圖片：</label>

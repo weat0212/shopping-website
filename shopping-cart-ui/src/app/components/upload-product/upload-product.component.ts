@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {ProductService} from "../../services/product.service";
+import {Router, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'app-upload-product',
@@ -18,7 +19,8 @@ export class UploadProductComponent implements OnInit {
   });
 
   categories!: string[];
-
+  successOrNot!: boolean;
+  successMsg = "成功上傳商品";
 
   constructor(
     private productService: ProductService
@@ -29,7 +31,14 @@ export class UploadProductComponent implements OnInit {
   }
 
   submit() {
-    this.productService.uploadNewProduct(this.productForm.value);
+    this.productService.uploadNewProduct(this.productForm.value).subscribe(
+      data => {
+        this.successOrNot = true;
+      },
+      error => {
+        console.error(error)
+      }
+    );
   }
 
   // Impl Fail

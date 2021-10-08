@@ -31,10 +31,7 @@ export class ProductService {
   }
 
   uploadNewProduct(product: FormProductDto) {
-    this.httpClient.post(this.uploadUrl, product).subscribe(
-      data => {},
-      error => {console.error(error)}
-    )
+    return this.httpClient.post(this.uploadUrl, product);
   }
 }
 
