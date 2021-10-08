@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
 
   productDto!: ProductDto;
   products!: Product[];
-  currentCategoryId!: number;
+  currentCategory!: string;
   searchMode!: boolean;
 
   constructor(
@@ -42,13 +42,13 @@ export class ProductListComponent implements OnInit {
 
   handleListProducts() {
     // Here check if category id existed
-    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+    const hasCategory: boolean = this.route.snapshot.paramMap.has('category');
 
-    if (hasCategoryId) {
+    if (hasCategory) {
       // get id param (string) and convert to number
       // @ts-ignore
-      this.currentCategoryId = +this.route.snapshot.paramMap.get('id');
-      this.productService.getProductList(this.currentCategoryId).subscribe(
+      this.currentCategory = this.route.snapshot.paramMap.get('category');
+      this.productService.getProductList(this.currentCategory).subscribe(
         data => {
           this.productDto = Utils.keysToCamel(data) as ProductDto;
           this.products = this.productDto.products;

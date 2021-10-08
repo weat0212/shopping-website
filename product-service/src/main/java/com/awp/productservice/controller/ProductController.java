@@ -70,4 +70,11 @@ public class ProductController {
                 products -> ProductListDto.builder().products(products).build()
         );
     }
+
+    @GetMapping("/category")
+    public Mono<ProductListDto> getProductByCategory(@RequestParam("category") String category) {
+        return productRepository.findProductByCategory(category).collectList().map(
+                products -> ProductListDto.builder().products(products).build()
+        );
+    }
 }

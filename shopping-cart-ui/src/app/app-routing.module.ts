@@ -7,7 +7,7 @@ const routes: Routes = [
   {path: "search/:keyword", component: ProductListComponent},
   {path: "products", component: ProductListComponent},
   {path: "product/new", component: UploadProductComponent},
-  {path: "category/:id", component: ProductListComponent},
+  {path: "category/:category", component: ProductListComponent},
   {path: "", component: ProductListComponent},
   {path: "**", redirectTo: '/products', pathMatch: 'full'}
 ];
