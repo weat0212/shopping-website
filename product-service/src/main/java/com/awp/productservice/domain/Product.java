@@ -14,7 +14,6 @@ import java.util.Date;
 public class Product {
 
     @Id
-    @Field
     private String id;
 
     //品名

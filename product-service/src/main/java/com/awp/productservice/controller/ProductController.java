@@ -4,6 +4,7 @@ import com.awp.productservice.domain.Product;
 import com.awp.productservice.dto.ProductDto;
 import com.awp.productservice.dto.ProductListDto;
 import com.awp.productservice.repository.ProductRepository;
+import org.bson.types.ObjectId;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -59,9 +60,9 @@ public class ProductController {
      */
     @GetMapping("/product/{id}")
     public Mono<ProductDto> getProduct(@PathVariable("id") String id) {
-        return productRepository.findById(id).map(product -> {
-            return ProductDto.builder().product(product).build();
-        });
+        return productRepository.findByObjectId(new ObjectId(id)).map(
+                product -> ProductDto.builder().product(product).build()
+        );
     }
 
     @GetMapping("/product")
