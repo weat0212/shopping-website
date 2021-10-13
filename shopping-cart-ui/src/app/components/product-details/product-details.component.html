@@ -1,8 +1,16 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <img src="assets/images/placeholder.png" class="detail-img" alt="Product image">
+      <h2>{{product.productName}}</h2>
+      <div class="price">{{product.originPrice | currency:'NTD':'symbol':'2.0'}}</div>
+      <a href="#" class="primary-btn">加入購物車</a>
 
-<div class="detail-section">
-  <div class="container-fluid">
+      <hr>
+      <h4>說明</h4>
+      <p>{{product.description}}</p>
 
-    <p style="margin-top: 100px">{{product.productName}}</p>
-
+      <a routerLink="/products" class="mt-5 btn btn-dark float-right">返回</a>
+    </div>
   </div>
 </div>
