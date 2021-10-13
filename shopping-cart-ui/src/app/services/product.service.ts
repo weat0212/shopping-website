@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {ProductDto} from "../models/dto/ProductDto";
 import {Category} from "../models/category";
 import {FormProductDto} from "../models/dto/formProductDto";
+import {ProductDetailsDto} from "../models/dto/productDetailsDto";
 
 @Injectable({
   providedIn: 'root'
