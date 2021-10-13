@@ -4,8 +4,12 @@
       <div class="row">
         <div *ngFor="let product of products" class="col-md-3">
           <div class="product-box">
-            <img src="assets/images/placeholder.png" class="img-responsive" alt="product">
-            <h1>{{ product.productName }}</h1>
+
+            <a routerLink="/products/{{product.id}}">
+              <img src="assets/images/placeholder.png" class="img-responsive" alt="product">
+              <h1>{{ product.productName }}</h1>
+            </a>
+
             <div class="price">{{ product.originPrice | currency:'NTD':'symbol':'3.0'}}</div>
             <a href="#" class="primary-btn">加入購物車</a>
           </div>

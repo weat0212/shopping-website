@@ -11,6 +11,7 @@ import {FormProductDto} from "../models/dto/formProductDto";
 export class ProductService {
 
   private baseUrl = 'http://localhost:8080/api/products'
+  private productBaseUrl = 'http://localhost:8080/api/product'
   private searchUrl = 'http://localhost:8080/api/product?'
   private categoryUrl = 'http://localhost:8080/api/category?'
   private uploadUrl = 'http://localhost:8080/api/product/new'
@@ -24,6 +25,10 @@ export class ProductService {
 
   searchProducts(theKeyword: string | null): Observable<ProductDto> {
     return this.httpClient.get<ProductDto>(this.searchUrl+'name='+theKeyword);
+  }
+
+  getProductById(id: string): Observable<ProductDetailsDto> {
+    return this.httpClient.get<ProductDetailsDto>(this.productBaseUrl+'/'+id);
   }
 
   getCategories(): Observable<Category>{
