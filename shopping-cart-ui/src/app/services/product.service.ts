@@ -19,9 +19,17 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProductList(category?:string): Observable<ProductDto> {
+  getProductList(): Observable<ProductDto> {
+    return this.httpClient.get<ProductDto>(this.baseUrl);
+  }
+
+  getProductListByCategory(category:string): Observable<ProductDto> {
     if (category != null) {return this.httpClient.get<ProductDto>(this.categoryUrl+'category='+category); }
     return this.httpClient.get<ProductDto>(this.baseUrl);
+  }
+
+  getProductListPaginate(thePage: number, thePageSize: number): Observable<ProductDto> {
+    return this.httpClient.get<ProductDto>(this.baseUrl+ `&page=${thePage}&size=${thePageSize}`);
   }
 
   searchProducts(theKeyword: string | null): Observable<ProductDto> {

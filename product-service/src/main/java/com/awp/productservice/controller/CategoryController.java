@@ -15,6 +15,11 @@ import java.util.List;
 @CrossOrigin
 public class CategoryController {
 
+    /**
+     * 用來取得商品分類(Enum)清單
+     *
+     * @return
+     */
     @GetMapping("/categories")
     public Mono<CategoriesDto> getCategories() {
         return Mono.just(new CategoriesDto(List.of(Category.values())));

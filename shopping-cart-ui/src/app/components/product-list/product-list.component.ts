@@ -16,7 +16,13 @@ export class ProductListComponent implements OnInit {
   productDto!: ProductDto;
   products!: Product[];
   currentCategory!: string;
+  previousCategory!: string;
   searchMode!: boolean;
+
+  // for pagination
+  thePageNumber: number = 1;
+  thePageSize: number = 10;
+  theTotalElements: number = 0;
 
   constructor(
     private productService: ProductService,
@@ -44,11 +50,18 @@ export class ProductListComponent implements OnInit {
     // Here check if category id existed
     const hasCategory: boolean = this.route.snapshot.paramMap.has('category');
 
+    if (this.previousCategory != this.currentCategory) {
+      this.thePageNumber = 1;
+    }
+
+    this.previousCategory = this.currentCategory;
+    console.log(`currentCategory=${this.currentCategory}, thePageNumber=${this.thePageNumber}`);
+
     if (hasCategory) {
       // get id param (string) and convert to number
       // @ts-ignore
       this.currentCategory = this.route.snapshot.paramMap.get('category');
-      this.productService.getProductList(this.currentCategory).subscribe(
+      this.productService.getProductListByCategory(this.currentCategory).subscribe(
         data => {
           this.productDto = Utils.keysToCamel(data) as ProductDto;
           this.products = this.productDto.products;
@@ -56,12 +69,8 @@ export class ProductListComponent implements OnInit {
         })
     } else {
       // No category id situation
-      this.productService.getProductList().subscribe(
-        data => {
-          this.productDto = Utils.keysToCamel(data) as ProductDto;
-          this.products = this.productDto.products;
-          // console.log(this.products.toString())
-        })
+      this.productService.getProductListPaginate(this.thePageNumber, this.thePageSize).subscribe(
+        this.processResult())
     }
   }
 
@@ -75,5 +84,16 @@ export class ProductListComponent implements OnInit {
         this.products = this.productDto.products;
       }
     )
+  }
+
+  processResult() {
+    // @ts-ignore
+    return data => {
+      this.productDto = Utils.keysToCamel(data) as ProductDto;
+      this.products = this.productDto.products;
+      this.thePageNumber = data.number;
+      this.thePageSize = data.size;
+      this.theTotalElements = data.theTotalElements;
+    }
   }
 }

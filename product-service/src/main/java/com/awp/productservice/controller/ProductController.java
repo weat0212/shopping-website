@@ -5,7 +5,9 @@ import com.awp.productservice.dto.ProductDto;
 import com.awp.productservice.dto.ProductListDto;
 import com.awp.productservice.repository.ProductRepository;
 import org.bson.types.ObjectId;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
@@ -52,6 +54,17 @@ public class ProductController {
                 });
     }
 
+    @GetMapping(value = "/products", params = {"page", "size"})
+    public Mono<ProductListDto> getAllPagination(@RequestParam("page") int page,
+                                                 @RequestParam("size") int size) {
+
+//        return productRepository.findAllProductsPaged().collect(Collectors.toList())
+        return productRepository.findAll().collect(Collectors.toList())
+                .map(productList -> {
+                    return ProductListDto.builder().products(productList).success(true).build();
+                });
+    }
+
     /**
      * 用ID取得特定商品
      *
@@ -65,6 +78,12 @@ public class ProductController {
         );
     }
 
+    /**
+     * 可利用關鍵字來查詢商品
+     *
+     * @param name
+     * @return
+     */
     @GetMapping("/product")
     public Mono<ProductListDto> getProductContaining(@RequestParam("name") String name) {
         return productRepository.findByProductNameContaining(name).collectList().map(
@@ -72,6 +91,13 @@ public class ProductController {
         );
     }
 
+
+    /**
+     * 利用分類來查詢商品
+     *
+     * @param category
+     * @return
+     */
     @GetMapping("/category")
     public Mono<ProductListDto> getProductByCategory(@RequestParam("category") String category) {
         return productRepository.findProductByCategory(category).collectList().map(

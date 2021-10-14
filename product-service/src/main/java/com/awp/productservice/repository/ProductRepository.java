@@ -2,6 +2,7 @@ package com.awp.productservice.repository;
 
 import com.awp.productservice.domain.Product;
 import org.bson.types.ObjectId;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
@@ -18,4 +19,7 @@ public interface ProductRepository extends ReactiveMongoRepository<Product, Obje
 
     @Query("{'_id': '?0'}")
     Mono<Product> findByObjectId(ObjectId oid);
+
+    @Query("{'_id': { $exists: true }}")
+    Flux<Product> findAllProductsPaged(final Pageable page);
 }
